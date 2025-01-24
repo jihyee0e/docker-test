@@ -1,0 +1,14 @@
+# 원본이미지명
+# 순서대로 Dockerfile을 읽으면서 캐시랑 다른 바뀐 내용 뒤는 다 다시 실행
+# 만약 3번째 줄에 새로운 작업을 넣으면 1, 2번째 실행시키는 줄은 그대로 하고, 바뀐 내용 뒤쪽으로만 update
+# => 자주 변경되는 작업은 뒤쪽에 작성해주면 작업 속도가 빨라짐
+FROM nginx:latest
+
+# 우리가 실행할 명령구들을 작성, .(현재 경로)
+# RUN cp . /usr/share/nginx/html/
+# RUN cp index.html /usr/share/nginx/html/
+# RUN cp 신짱구.png /usr/share/nginx/html/
+COPY . /usr/share/nginx/html/
+
+RUN echo "작업완료"
+# 3.0: 278MB
